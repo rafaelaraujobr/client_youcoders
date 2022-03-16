@@ -6,8 +6,21 @@
         <div class="text-subtitle2">by John Doe</div>
       </q-card-section>
       <q-card-section>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        <q-input v-model="user" type="text" label="Usuario" />
+        <q-input v-model="password" type="passwords" label="Senha" />
       </q-card-section>
     </q-card>
   </q-page>
 </template>
+<script>
+export default {
+  name: "SignInPage",
+  data() {
+    return {
+      user: "",
+      password: "",
+    };
+  },
+};
+</script>
+
