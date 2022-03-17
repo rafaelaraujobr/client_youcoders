@@ -1,5 +1,6 @@
 <template>
   <q-page padding>
+    <featured :registers="rows.slice(0, 3)" />
     <q-table :data="rows" row-key="id" grid>
       <template v-slot:item="props">
         <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
@@ -42,7 +43,9 @@
 </template>
 
 <script>
+import Featured from "../components/Featured.vue";
 export default {
+  components: { Featured },
   name: "HomePage",
   data() {
     return {};
