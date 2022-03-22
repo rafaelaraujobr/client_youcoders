@@ -2,40 +2,31 @@
   <div class="row">
     <div class="col-8">
       <q-carousel animated v-model="slide" infinite>
-        <q-carousel-slide name="soft-jazz">
+        <q-carousel-slide
+          :name="index"
+          v-for="(item, index) in registers"
+          :key="index"
+        >
           <q-video
             class="absolute-full"
-            src="https://www.youtube.com/embed/k3_tw44QsZQ"
-          />
-        </q-carousel-slide>
-
-        <q-carousel-slide name="Rihanna">
-          <q-video
-            class="absolute-full"
-            src="https://www.youtube.com/embed/kOkQ4T5WO9E"
-          />
-        </q-carousel-slide>
-
-        <q-carousel-slide name="ibiza">
-          <q-video
-            class="absolute-full"
-            src="https://www.youtube.com/embed/p87miJIYEEk"
+            :src="`https://www.youtube.com/embed/${item.id.videoId}`"
           />
         </q-carousel-slide>
       </q-carousel>
     </div>
     <div class="col-4">
       <q-card flat bordered v-for="(item, index) in registers" :key="index">
-        <q-item>
+        <q-item clickable @click="slide = index">
           <q-item-section avatar>
             <q-img
               :src="item.snippet.thumbnails.medium.url"
               spinner-color="primary"
-              height="100px"
+              width="205px"
+              :ratio="16 / 9"
               spinner-size="82px"
           /></q-item-section>
           <q-item-section>
-            <q-item-label>{{ item.snippet.title }}</q-item-label>
+            <q-item-label lines="2">{{ item.snippet.title }}</q-item-label>
             <q-item-label caption lines="1">{{
               item.snippet.publishTime
             }}</q-item-label>
@@ -46,17 +37,6 @@
         </q-item>
       </q-card>
     </div>
-    <!-- <div class="row justify-center">
-      <q-btn-toggle
-        glossy
-        v-model="slide"
-        :options="[
-          { label: 'Soft Jazz', value: 'soft-jazz' },
-          { label: 'Rihanna', value: 'Rihanna' },
-          { label: 'Ibiza Mix', value: 'ibiza' },
-        ]"
-      />
-    </div> -->
   </div>
 </template>
 
@@ -67,7 +47,7 @@ export default {
   },
   data() {
     return {
-      slide: "Rihanna",
+      slide: 0,
     };
   },
 };

@@ -30,6 +30,9 @@
         </q-item>
       </q-list>
     </q-menu>
+    <q-tooltip content-class="bg-primary text-white text-subtitle2"
+      >Historico de pesquisa</q-tooltip
+    >
   </q-btn>
 </template>
 

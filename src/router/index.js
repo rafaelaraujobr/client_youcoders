@@ -14,9 +14,10 @@ const routes = [
         component: () => import('@/pages/Home.vue')
       },
       {
-        path: '/main',
+        path: 'main/token/:tokenGoogle',
         name: 'Main',
-        component: () => import('@/pages/Main.vue')
+        component: () => import('@/pages/Main.vue'),
+        props: true,
       },
     ]
   },

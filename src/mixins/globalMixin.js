@@ -1,5 +1,4 @@
 import { mapActions, mapGetters } from "vuex";
-import axios from "axios";
 export default {
     methods: {
         ...mapActions("Auth", ["ActionSetUser", "ActionSetToken", "ActionSetRows"]),
@@ -40,12 +39,16 @@ export default {
                 });
             else this.$q.loading.hide();
         },
-        async getSearch() {
-            this.ActionAddHistory({ value: this.search, created_at: new Date() });
+        async getSearch(search) {
+            this.ActionAddHistory({ value: search, created_at: new Date() });
             this.onLoading(true)
             try {
-                const { data } = await axios.get(
-                    `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${this.search}&key=${this.google_api_key}&maxResults=50`
+                const { data } = await this.$youtubeApi.get(
+                    "/search", {
+                    params: {
+                        q: search
+                    }
+                }
                 );
                 if (data) {
                     this.ActionSetRows(data.items)

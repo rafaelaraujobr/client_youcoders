@@ -3,12 +3,10 @@ export default {
     state: {
         user: {},
         token: null,
-        google_api_key: "AIzaSyDXvYiP4fLYom9O5KnLHf2utqtMgIPmTA0"
     },
     getters: {
         user: (state) => state.user,
         token: (state) => state.token,
-        google_api_key: (state) => state.google_api_key,
     },
     mutations: {
         SET_USER(state, payload) {
@@ -16,6 +14,7 @@ export default {
         },
         SET_TOKEN(state, payload) {
             state.token = payload;
+            localStorage.setItem("youcoders_token", payload)
         }
     },
     actions: {

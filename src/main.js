@@ -12,8 +12,11 @@ Vue.mixin(globalMixin);
 
 import moment from './plugins/moment'
 
+import http from './plugins/http'
+
 new Vue({
   moment,
+  http,
   router,
   store,
   render: h => h(App)

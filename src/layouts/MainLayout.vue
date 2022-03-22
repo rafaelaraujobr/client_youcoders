@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh Lpr lFf">
-    <q-header bordered>
+    <q-header bordered class="text-dark bg-white">
       <q-toolbar>
         <q-btn
           flat
@@ -19,16 +19,14 @@
           class="text-subtitle1"
           label="youcoders"
         /><q-space />
-        <!-- <q-toolbar-title>youcoders</q-toolbar-title> -->
         <q-toolbar-title>
           <q-input
             v-model="searchSelect"
             type="search"
-            label="Buscar..."
-            filled
+            placeholder="Buscar..."
             dense
-            dark
-            @keyup.enter="getSearch"
+            filled
+            @keyup.enter="getSearch(searchSelect)"
           >
             <template v-slot:append>
               <q-icon name="search" />
@@ -64,7 +62,7 @@
             no-caps
             class="q-px-md"
             label="Entrar"
-            to="/signin"
+            href="http://localhost:3000/auth/google"
           />
         </div>
       </q-toolbar>
@@ -74,7 +72,7 @@
       v-model="leftDrawerOpen"
       bordered
       show-if-above
-      content-class="bg-grey-2"
+      content-class="bg-white text-dark"
       :mini="miniState"
       @mouseover="miniState = false"
       @mouseout="miniState = true"
@@ -84,7 +82,7 @@
       <q-list>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
           <q-item-section side>
-            <q-icon name="home" />
+            <q-icon name="mdi-home-variant-outline" />
           </q-item-section>
           <q-item-section>
             <q-item-label>Início</q-item-label>
@@ -92,7 +90,7 @@
         </q-item>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
           <q-item-section side>
-            <q-icon name="home" />
+            <q-icon name="mdi-television-play" />
           </q-item-section>
           <q-item-section>
             <q-item-label>Videos</q-item-label>
@@ -100,10 +98,10 @@
         </q-item>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
           <q-item-section side>
-            <q-icon name="home" />
+            <q-icon name="mdi-play-box-multiple-outline" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Channels</q-item-label>
+            <q-item-label>Canais</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

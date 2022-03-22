@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    search: '',
+    search: 'tecmundo',
     histories: localStorage['youcod3rs_histories'] ? JSON.parse(localStorage.getItem('youcod3rs_histories')) : [],
     rows: []
   },
