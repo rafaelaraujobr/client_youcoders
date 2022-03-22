@@ -62,13 +62,11 @@ export default {
         },
         async logout() {
             try {
-                const { status } = await axios.delete("https://app-youcoders-v1.herokuapp.com/logout")
-                if (status === 200) {
-                    this.ActionSetToken("");
-                    this.ActionSetUser("");
-                    localStorage.removeItem("youcoders_token");
-                    this.$router.push({ name: "Home" });
-                }
+                this.ActionSetToken("");
+                this.ActionSetUser("");
+                localStorage.removeItem("youcoders_token");
+                this.$router.push({ name: "Home" });
+                await axios.delete("https://app-youcoders-v1.herokuapp.com/logout")
             } catch (error) {
                 console.log(error);
             }
