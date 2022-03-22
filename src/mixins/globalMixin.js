@@ -40,7 +40,6 @@ export default {
             else this.$q.loading.hide();
         },
         async getSearch(search) {
-            this.ActionAddHistory({ value: search, created_at: new Date() });
             this.onLoading(true)
             try {
                 const { data } = await this.$youtubeApi.get(
@@ -52,6 +51,7 @@ export default {
                 );
                 if (data) {
                     this.ActionSetRows(data.items)
+                    this.ActionAddHistory({ value: search, created_at: new Date() });
                 }
             } catch (error) {
                 console.log(error);

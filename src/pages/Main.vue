@@ -1,7 +1,5 @@
 <template>
-  <q-page padding>
-    {{ this.token }}
-  </q-page>
+  <q-page padding>{{ JSON.parse(this.profile) }} </q-page>
 </template>
 
 <script>
@@ -10,15 +8,14 @@ export default {
     tokenGoogle: {
       type: String,
     },
-  },
-  name: "MainPage",
-  watch: {
-    token() {
-      this.ActionSetToken(this.tokenGoogle);
+    profile: {
+      type: String,
     },
   },
+  name: "MainPage",
   created() {
-    this.getSearch(this.search);
+    this.ActionSetToken(this.tokenGoogle);
+    this.ActionSetUser(JSON.parse(this.profile));
   },
 };
 </script>
