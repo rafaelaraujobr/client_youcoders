@@ -62,7 +62,7 @@
             no-caps
             class="q-px-md"
             label="Entrar"
-            href="http://localhost:3000/auth/google"
+            href="https://app-youcoders-v1.herokuapp.com/auth/google"
           />
         </div>
       </q-toolbar>
