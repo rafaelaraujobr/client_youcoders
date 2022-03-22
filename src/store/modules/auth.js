@@ -1,7 +1,7 @@
 export default {
     namespaced: true,
     state: {
-        user: {},
+        user: null,
         token: null,
     },
     getters: {
@@ -14,7 +14,6 @@ export default {
         },
         SET_TOKEN(state, payload) {
             state.token = payload;
-            localStorage.setItem("youcoders_token", payload)
         }
     },
     actions: {

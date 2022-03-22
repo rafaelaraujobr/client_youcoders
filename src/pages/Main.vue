@@ -15,6 +15,7 @@ export default {
   name: "MainPage",
   created() {
     this.ActionSetToken(this.tokenGoogle);
+    localStorage.setItem("youcoders_token", this.tokenGoogle);
     this.ActionSetUser(JSON.parse(this.profile));
   },
 };

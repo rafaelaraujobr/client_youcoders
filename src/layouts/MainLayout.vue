@@ -50,7 +50,6 @@
             v-if="!user"
             outline
             dense
-            @click="leftDrawerOpen = !leftDrawerOpen"
             aria-label="Login"
             no-caps
             class="q-px-md"

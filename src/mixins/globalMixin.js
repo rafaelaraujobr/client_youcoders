@@ -66,7 +66,7 @@ export default {
                 if (status === 200) {
                     this.ActionSetToken("");
                     this.ActionSetUser("");
-                    // localStorage.removeItem("agendaih_token");
+                    localStorage.removeItem("youcoders_token");
                     this.$router.push({ name: "Home" });
                 }
             } catch (error) {
