@@ -36,6 +36,7 @@
         <div class="q-gutter-sm q-mr-xl">
           <history-controller />
           <q-btn
+            v-if="user"
             flat
             dense
             round
@@ -46,15 +47,7 @@
         </div>
         <div class="q-gutter-sm">
           <q-btn
-            flat
-            dense
-            @click="leftDrawerOpen = !leftDrawerOpen"
-            aria-label="SignUp"
-            no-caps
-            class="q-px-md"
-            label="Criar conta"
-          />
-          <q-btn
+            v-if="!user"
             outline
             dense
             @click="leftDrawerOpen = !leftDrawerOpen"
@@ -63,6 +56,16 @@
             class="q-px-md"
             label="Entrar"
             href="https://app-youcoders-v1.herokuapp.com/auth/google"
+          />
+          <q-btn
+            v-if="user"
+            outline
+            dense
+            aria-label="Logout"
+            no-caps
+            class="q-px-md"
+            label="Sair"
+            @click="logout()"
           />
         </div>
       </q-toolbar>

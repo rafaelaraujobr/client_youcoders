@@ -1,4 +1,5 @@
 import { mapActions, mapGetters } from "vuex";
+import axios from "axios";
 export default {
     methods: {
         ...mapActions("Auth", ["ActionSetUser", "ActionSetToken", "ActionSetRows"]),
@@ -59,6 +60,19 @@ export default {
                 this.onLoading(false)
             }
         },
+        async logout() {
+            try {
+                const { status } = await axios.delete("https://app-youcoders-v1.herokuapp.com/logout")
+                if (status === 200) {
+                    this.ActionSetToken("");
+                    this.ActionSetUser("");
+                    // localStorage.removeItem("agendaih_token");
+                    this.$router.push({ name: "Home" });
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     },
     computed: {
         ...mapGetters("Auth", ["user", "google", "google_api_key"]),

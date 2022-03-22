@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>{{ JSON.parse(this.profile) }} </q-page>
+  <q-page padding>{{ user }} </q-page>
 </template>
 
 <script>
