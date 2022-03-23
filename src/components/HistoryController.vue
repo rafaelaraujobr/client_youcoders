@@ -10,7 +10,7 @@
           v-close-popup
           v-for="(history, index) in histories"
           :key="index"
-          @click.stop="ActionSetSearch(history.value), getSearch()"
+          @click.stop="ActionSetSearch(history.value), getSearch(history.value)"
         >
           <q-item-section>
             <q-item-label>{{ history.value }}</q-item-label>

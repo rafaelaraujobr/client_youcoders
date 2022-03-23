@@ -54,18 +54,9 @@
             no-caps
             class="q-px-md"
             label="Entrar"
-            href="https://app-youcoders-v1.herokuapp.com/auth/google"
+            :href="`${urlServer}/auth/google`"
           />
-          <q-btn
-            v-if="user"
-            outline
-            dense
-            aria-label="Logout"
-            no-caps
-            class="q-px-md"
-            label="Sair"
-            @click="logout()"
-          />
+          <account-menu />
         </div>
       </q-toolbar>
     </q-header>
@@ -76,13 +67,24 @@
       show-if-above
       content-class="bg-white text-dark"
       :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
       :width="256"
       :breakpoint="512"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
     >
       <q-list>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-card v-if="user && !miniState" class="text-center" flat>
+          <q-card-section>
+            <q-avatar size="96px" font-size="96px" text-color="grey-5">
+              <img :src="user.picture" v-if="user.picture" />
+              <q-icon name="mdi-account-circle" v-else />
+            </q-avatar>
+          </q-card-section>
+          <q-card-section>
+            <div class="text-h6">{{ user.name }}</div>
+          </q-card-section>
+        </q-card>
+        <q-item clickable to="/home">
           <q-item-section side>
             <q-icon name="mdi-home-variant-outline" />
           </q-item-section>
@@ -90,7 +92,12 @@
             <q-item-label>Início</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item
+          clickable
+          tag="a"
+          target="_blank"
+          href="https://studio.youtube.com/"
+        >
           <q-item-section side>
             <q-icon name="mdi-television-play" />
           </q-item-section>
@@ -98,7 +105,12 @@
             <q-item-label>Videos</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item
+          clickable
+          tag="a"
+          target="_blank"
+          href="https://studio.youtube.com/"
+        >
           <q-item-section side>
             <q-icon name="mdi-play-box-multiple-outline" />
           </q-item-section>
@@ -116,9 +128,10 @@
 </template>
 
 <script>
+import AccountMenu from "../components/AccountMenu.vue";
 import HistoryController from "../components/HistoryController.vue";
 export default {
-  components: { HistoryController },
+  components: { HistoryController, AccountMenu },
   name: "MainLayout",
   data() {
     return {

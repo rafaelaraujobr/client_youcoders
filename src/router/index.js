@@ -14,7 +14,7 @@ const routes = [
         component: () => import('@/pages/Home.vue')
       },
       {
-        path: 'main/:profile/:tokenGoogle',
+        path: 'main/:profile?/:tokenGoogle?',
         name: 'Main',
         component: () => import('@/pages/Main.vue'),
         props: true,

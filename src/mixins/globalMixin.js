@@ -62,19 +62,27 @@ export default {
         },
         async logout() {
             try {
+                const { status } = await axios.get(`${process.env.VUE_APP_SERVER}/logout`)
+                console.log('Status ==>', status)
                 this.ActionSetToken("");
                 this.ActionSetUser("");
                 localStorage.removeItem("youcoders_token");
                 this.$router.push({ name: "Home" });
-                await axios.delete("https://app-youcoders-v1.herokuapp.com/logout")
             } catch (error) {
                 console.log(error);
             }
-        }
+        },
+        setModeDark() {
+            if (this.$q.dark.isActive) this.$q.dark.set(false);
+            else this.$q.dark.set(true);
+        },
     },
     computed: {
         ...mapGetters("Auth", ["user", "google", "google_api_key"]),
         ...mapGetters(["search", "rows", "histories"]),
+        urlServer() {
+            return process.env.VUE_APP_SERVER
+        },
         isMobile() {
             return (
                 this.$q.platform.is.mobile ||
